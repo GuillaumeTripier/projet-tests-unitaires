@@ -1,10 +1,29 @@
 import org.assertj.core.api.Assertions;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.*;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class MathTest {
 
+    @BeforeClass public static void print_in_console_that_MathTest_class_unit_tests_have_begun() {
+        System.out.println("MathTest class unit tests have begun");
+    }
+
+    @AfterClass public static void print_in_console_that_MathTest_class_unit_tests_are_finished() {
+        System.out.println("MathTest class unit tests are finished");
+    }
+
+    @Before public void sleep_for_500_ms() throws InterruptedException {
+        System.out.println("Before execution");
+        Thread.sleep(500);
+    }
+
+    @After public void print_in_console_that_one_unit_test_is_finished() {
+        System.out.println("After execution");
+        System.out.println("One unit test is finished");
+    }
+
+    @Ignore
     @Test
     public void absolute_value_of_positive_number_should_be_equal_to_the_number() {
         // GIVEN / WHEN / THEN : langage Gherkin
@@ -19,7 +38,7 @@ public class MathTest {
         int result = math.abs(input);
 
         // THEN - ASSERT
-        int expected = 5;
+        int expected = 6;
         /*Assert.assertEquals("Absolute value of positive number should be equal to the input",
                 5,
                 result);*/
